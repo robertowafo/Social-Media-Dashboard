@@ -1,19 +1,28 @@
 <?php
+session_start();
 include 'db.php';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
 
-    // Fetch user by email
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
-    $stmt->execute([$email]);
-    $user = $stmt->fetch();
+    $stmt = $conn->prepare("SELECT * FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    $user = $result->fetch_assoc();
 
     if ($user && password_verify($password, $user['password'])) {
-        echo json_encode(['success' => true]);
+        
+        $_SESSION['name'] = $user['name'];
+        $_SESSION['email'] = $user['email'];
+
+        // Redirect to the dashboard page
+        header("Location: dashboard.php");
+        exit();
     } else {
-        echo json_encode(['success' => false, 'message' => 'Invalid email or password.']);
+        
+        echo "Incorrect email or password.";
     }
 }
 ?>

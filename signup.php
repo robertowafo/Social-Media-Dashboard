@@ -1,26 +1,26 @@
 <?php
+session_start();
 include 'db.php';
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
 
-    // Check if email already exists
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ?");
-    $stmt->execute([$email]);
+    $stmt = $conn->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $name, $email, $password);
 
-    if ($stmt->rowCount() > 0) {
-        echo json_encode(['success' => false, 'message' => 'Email already exists.']);
-        exit;
-    }
+    if ($stmt->execute()) {
+        // After signup, store the user information in session
+        $_SESSION['name'] = $name;
+        $_SESSION['email'] = $email;
 
-    // Insert new user
-    $stmt = $pdo->prepare("INSERT INTO users (name, email, password) VALUES (?, ?, ?)");
-    if ($stmt->execute([$name, $email, $password])) {
-        echo json_encode(['success' => true]);
+        // Redirect to the dashboard page
+        header("Location: dashboard.php");
+        exit();
     } else {
-        echo json_encode(['success' => false, 'message' => 'Registration failed.']);
+        // Handle sign-up failure
+        echo "Error: " . $stmt->error;
     }
 }
 ?>
