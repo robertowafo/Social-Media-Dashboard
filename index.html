@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Styling -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital@0;1&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Chart -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <title>Admin Dashboard Social Media</title>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <i class=" fas fa-bars"></i>
+            <h2 class="logo">ASMBoard</h2>
+        </div>
+        <div class="nav-right">
+            <div class="search">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="search...">
+            </div>    
+            <div class="notifications">
+                <i class="fas fa-bell "></i>
+            </div>                
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="profile">
+                <img class="profile-image" src="images/profile.png" alt="Profile Image">
+                <h3>MOPOUONG WAFO ROBERTO</h3>
+                <p>Software Engineering</p>
+            </div>
+            <div class="menu">
+                <div class="menu-detail menu-active">
+                    <a href="#">
+                        <i class="fas fa-chart-pie menu-icon"></i> <span>Dashboard</span>
+                    </a>
+                </div>
+                <div class="menu-detail">
+                    <a href="#">
+                        <i class="fas fa-gifts menu-icon"></i> <span>Campaign</span> 
+                    </a>
+                </div>
+                <div class="menu-detail">
+                    <a href="#">
+                        <i class="fas fa-headset menu-icon"></i> <span>Support Center</span> 
+                    </a>
+                </div>
+                <div class="menu-detail">
+                    <a href="#">
+                        <i class="fas fa-user-secret menu-icon"></i> <span>Security</span> 
+                    </a>
+                </div>
+                <div class="menu-detail">
+                    <a href="#">
+                        <i class="fas fa-cog menu-icon"></i> <span>Settings</span> 
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-container">
+            <!-- Left -->
+            <div class="left-container">
+                <div class="wrapper">
+                    <div class="card-wrapper">
+                        <div class="card">
+                            <i class="fab fa-instagram social-icon"></i>
+                            <h1 class="count">10k</h1>
+                            <small>Followers</small>
+                            <div class="dropdown">
+                                <button class="btn btn-more">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <div class="dropdown-content">
+                                    <a href="#">Details</a>
+                                    <a href="#">Download</a>
+                                    <a href="#">Share</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <i class="fab fa-youtube social-icon"></i>
+                            <h1 class="count">10k</h1>
+                            <small>Subscribers</small>
+                            <div class="dropdown">
+                                <button class="btn btn-more">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <div class="dropdown-content">
+                                    <a href="#">Details</a>
+                                    <a href="#">Download</a>
+                                    <a href="#">Share</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-wrapper">
+                        <div class="card">
+                            <i class="fab fa-facebook-f social-icon"></i>
+                            <h1 class="count">30k</h1>
+                            <small>Followers</small>
+                            <div class="dropdown">
+                                <button class="btn btn-more">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <div class="dropdown-content">
+                                    <a href="#">Details</a>
+                                    <a href="#">Download</a>
+                                    <a href="#">Share</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <i class="fab fa-tiktok social-icon"></i>
+                            <h1 class="count">40k</h1>
+                            <small>Followers</small>
+                            <div class="dropdown">
+                                <button class="btn btn-more">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                                <div class="dropdown-content">
+                                    <a href="#">Details</a>
+                                    <a href="#">Download</a>
+                                    <a href="#">Share</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="wrapper">
+                    <div class="card">
+                        <div class="title-wrapper">
+                            <h3 class="title">Trend Data</h3>
+                            <div class="filter">
+                                <a class="active" href="#">Day</a>
+                                <a href="#">Week</a>
+                                <a href="#">Month</a>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <div id ="chLine"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right -->
+            <div class="right-container">
+                <!-- Add right container content here -->
+
+                <div class="card">
+                    <h3 class = "title" > summary</h3>
+                    <div id="dougnut-chart"> </div>
+                    <div class="chart-detail">
+                        <div class="detail-wrapper">
+                            <i class=" fas fa-theater-masks"> </i>
+                            <p>Impression</p>
+                            <h3 class="detail-num">3400k </h3> <span class="up-down green">+ 64%</span>
+                        </div>
+                        <hr class="divider">
+                        <div class="detail-wrapper">
+                            <i class=" fas fa-user-friends"> </i>
+                            <p>Followers</p>
+                            <h3 class="detail-num">2350</h3> <span class="up-down green">+ 29%</span>
+                        </div>
+                        <hr class="divider">
+                        <div class="detail-wrapper">
+                            <i class=" fas fa-shapes"> </i>
+                            <p>Engagement</p>
+                            <h3 class="detail-num">123 </h3> <span class="up-down red">+ 64%</span>
+                        </div>
+                        <hr class="divider">
+                        <div class="detail-wrapper">
+                            <i class=" fas fa-shapes"> </i>
+                            <p>Likes</p>
+                            <h3 class="detail-num">478 </h3> <span class="up-down red">+ 7%</span>
+                        </div>
+                        <hr class="divider">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bottom -->
+            <div class="bottom-container">
+                <!-- Add bottom container content here -->
+
+                 <div class="card">
+                    <h3 class="title">Recent Upload</h3>
+                    <div class="table-wrapper">
+                        <table class="table">
+                            <tr>
+                                <th>Thumbnails & Descriptions</th>
+                                <th>Dates</th>
+                                <th>View</th>
+                                <th>Comment</th>
+                                <th>Likes</th>
+                                <th>More</th>
+                            </tr>
+                            <tr>
+                                <td class="table-title">
+                                    <img src="./images/profile.png" alt="" class="table-image">
+                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa, officiis!</p>
+
+                                </td>
+                                <td>Dec 11, 2021</td>
+                                <td>280K</td>
+                                <td>151</td>
+                                <td>70K</td>
+                                <td><button class="btn btn-table">Details</button></td>
+                            </tr>
+                            <tr>
+                                <td class="table-title">
+                                    <img src="./images/profile.png" alt="" class="table-image">
+                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa, officiis!</p>
+
+                                </td>
+                                <td>Jan 15, 2022</td>
+                                <td>32K</td>
+                                <td>10</td>
+                                <td>465K</td>
+                                <td><button class="btn btn-table">Details</button></td>
+                            </tr>
+                            <tr>
+                                <td class="table-title">
+                                    <img src="./images/profile.png" alt="" class="table-image">
+                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Culpa, officiis!</p>
+
+                                </td>
+                                <td>Feb 06, 2022</td>
+                                <td>120K</td>
+                                <td>151</td>
+                                <td>70K</td>
+                                <td><button class="btn btn-table">Details</button></td>
+                            </tr>
+                        </table>
+
+                    </div>
+                 </div>
+
+                
+            </div>
+        </div>            
+    </div>
+</body>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="app.js"></script>
+</html>
